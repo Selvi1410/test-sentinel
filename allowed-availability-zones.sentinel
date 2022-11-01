@@ -1,0 +1,17 @@
+import "tfplan/v2" as tfplan
+import "tfconfig/v2" as tfconfig
+import "tfplan-functions" as tfplan
+
+allowed_zones = ["ap-southeast-1a"]
+
+print(allowed_zones)
+
+allEC2Instance = plan.find_resources("aws_instance")
+
+violatingEC2Instances = plan.filter_attribute_not_in_list(allEC2Instances,
+                        "availability_zone", allowed_zones, true)
+
+# Main rule
+main = rule {
+  length(violatingEC2Instances["messages"]) is 0
+}

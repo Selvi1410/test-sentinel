@@ -1,0 +1,22 @@
+import "tfplan/v2" as tfplan
+import "tfconfig/v2" as tfconfig
+
+approved_amis = ["ami-0708edb40a885c6ee"]
+
+allec2 = filter tfplan.resource_changes as _, rc {
+    rc.type is "aws_ami"
+    }
+print("allec2 - ", allec2)
+validate_condition = 0
+
+for allec2 as _, ec2 {
+    if ec2["change"]["after"]["ami"] not in approved_amis {
+        validate_condition = validate_condition + 1
+        print("Violation: AMI", ec2["change"]["after"]["ami"], "is not approved for ec2", ec2["address"] )
+    }else {
+        print(ec2["change"]["after"]["ami"], "AMI is approved")
+    }
+}
+main = rule {
+    validate_condition <= 0 
+}
