@@ -1,0 +1,15 @@
+import "tfplan-functions" as tfplan
+
+allowed_regions =["ap-southeast-1"]
+ 
+allEC2Instance = plan.find_resources("aws_instance")
+
+
+wrongregions = plan.filter_attribute_not_in_list(allEC2Instance, "region", allowed_regions, true)
+ 
+print(wrongregions)
+ 
+main = rule {
+ length(wrongSDDCregions["messages"]) is 0
+}
+
