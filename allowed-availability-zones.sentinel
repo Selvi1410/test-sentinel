@@ -1,6 +1,6 @@
 import "tfplan/v2" as tfplan
 import "tfconfig/v2" as tfconfig
-import "tfplan-functions" as tfplan
+import "tfplan-functions" as plan
 
 allowed_zones = ["ap-southeast-1a"]
 
