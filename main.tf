@@ -14,7 +14,3 @@ resource "aws_instance" "web" {
   }
 }
 
-resource "aws_ebs_volume" "example" {
-  availability_zone = "us-west-2a"
-  size              = 1
-}
