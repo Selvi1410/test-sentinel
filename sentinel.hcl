@@ -20,6 +20,6 @@ policy "allowed-region" {
 }
 
 policy "allowed-availability-zones" {
-  source  = "./restrict-availability-zones.sentinel"
+  source  = "./allowed-availability-zones.sentinel"
   enforcement_level = "soft-mandatory"
 }
