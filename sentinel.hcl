@@ -23,7 +23,3 @@ policy "allowed-region" {
   enforcement_level = "soft-mandatory"
 }
 
-policy "allowed-availability-zones" {
-  source  = "./allowed-availability-zones.sentinel"
-  enforcement_level = "soft-mandatory"
-}
