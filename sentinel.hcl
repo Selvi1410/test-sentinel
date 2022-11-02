@@ -9,6 +9,10 @@ module "tfconfig-functions" {
     source = "../common-functions/tfstate-functions.sentinel"
 }
 
+module "aws-functions" {
+    source = "./aws-functions/aws-functions.sentinel"
+}    
+
 policy "restrict-instance-type" {
   source  = "./restrict-instance-type.sentinel"
   enforcement_level = "hard-mandatory"
